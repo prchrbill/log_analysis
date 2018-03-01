@@ -9,7 +9,7 @@ def connect(database_name="news"):
         db = psycopg2.connect("dbname={}".format(database_name))
         cursor = db.cursor()
         return db, cursor
-    except:
+    except Exception as e:
         print("I am sorry Dave, I'm afraid I can't do that.")
 
 
@@ -28,7 +28,7 @@ def articles_by_popularity_view():
         cursor.execute(query)
         db.commit()
         db.close()
-    except:
+    except Exception as e:
         print("Error in creating view articles_by_popularity_view")
 
 
@@ -42,7 +42,7 @@ def authors_by_popularity_view():
         cursor.execute(query)
         db.commit()
         db.close()
-    except:
+    except Exception as e:
         print("Error in creating view authors_by_popularity_view")
 
 
@@ -58,7 +58,7 @@ def log_status_error_view():
         cursor.execute(query)
         db.commit()
         db.close()
-    except:
+    except Exception as e:
         print("Error in creating view log_status_error_view")
 
 
@@ -97,6 +97,7 @@ def log_status_error():
     for row in range(0, len(data), 1):
         print str(data[row][0]) + " - "+str(round(data[row][3], 2))+"% errors"
     db.close
+
 
 # The code below builds the sql views as well as prints the data queries
 if __name__ == "__main__":
