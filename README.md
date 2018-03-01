@@ -1,7 +1,7 @@
 # log_analysis
 Log analysis project for Udacity FSND
 ## Introduction
-This is a python module that uses information of large database of a web server and draw business conclusions from that information. The database contains newspaper articles, as well as the web server log for the site. The log has a database row for each time a reader loaded a web page. The database includes three tables:
+This is a python module that uses information of large database of a web server and builds query results from that information. The database contains newspaper articles, as well as the web log for the site. The log has a database row for each time a reader loaded a web page. The database includes these three tables:
 * The **authors** table includes information about the authors of articles.
 * The **articles** table includes the articles themselves.
 * The **log** table includes one entry for each time a user has accessed the site.
@@ -11,16 +11,7 @@ This is a python module that uses information of large database of a web server 
 * Most popular article authors of all time.
 * Days on which more than 1% of requests lead to errors.
 
-### Functions in newsdb.py:
-* **connect():** Connects to the PostgreSQL database and returns a database connection.
-* **articles_by_popularity_view():** Creates SQL view articles_by_popularity_view.
-* **authors_by_popularity_view():** Creates SQL view authors_by_popularity_view.
-* **log_satus_error_view():** Creates SQL view log_satus_error_view.
-* **articles_by_popularity():** Prints most popular three articles of all time.
-* **authors_by_popularity():** Prints most popular article authors of all time.
-* **log_satus_error():** Print days on which more than 1% of requests lead to errors.
-
-### Views Made:
+### Views Created by the program:
 * <h4>articles_by_popularity_view</h4>
 ```sql
 create or replace view articles_by_popularity_view as
@@ -59,7 +50,7 @@ where (Error::float*100)/Total::float > 1.0 order by Percent desc;
   <pre>psql -d news -f newsdata.sql;</pre>
 * <h4>Run Module</h4>
   <pre>python newsdb.py</pre>
-* <h4>The Views<h4>
+* <h4>The Views</h4>
   Views can be entered manually by enertering 'psql' in your terminal but I have the program do it for you.
   You can comment them out, edit them, etc, just be sure use the view names I have in the program or edit the file
   to match your view name choices.
