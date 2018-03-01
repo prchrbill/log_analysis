@@ -17,6 +17,7 @@ def connect(database_name="news"):
 # I am choosing to have the python program create the views
 # so the user does not have to. However these can be commented
 # out if the user wants to build his own views in sql
+# I got help from various examples on github to build these views
 def articles_by_popularity_view():
     try:
         db, cursor = connect()
@@ -61,7 +62,8 @@ def log_status_error_view():
         print("Error in creating view log_status_error_view")
 
 
-# (1) This function will print the three most popular articles.
+# I got some great ideas from different many github files for these functions.
+# This function will print the three most popular articles.
 def articles_by_popularity():
     db, cursor = connect()
     query = "SELECT * from articles_by_popularity_view LIMIT 3;"
@@ -73,7 +75,7 @@ def articles_by_popularity():
     db.close
 
 
-# (2) This function will print the most popular authors from our database.
+# This function will print the most popular authors from our database.
 def authors_by_popularity():
     db, cursor = connect()
     query = "select * from authors_by_popularity_view limit 3"
